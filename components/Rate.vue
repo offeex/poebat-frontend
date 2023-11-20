@@ -36,7 +36,7 @@
 				@mouseover="onHover(i, $event)" />
 		</span>
 		<button>Оцінити!</button>
-		<Transition >
+		<Transition>
 			<span class="troll viskochka" v-if="warning && rating !== 5">
 				Чуєш бля нижче 5 зірок поставити не мона, зара рекламу буш дивитися 2 години
 			</span>
@@ -103,12 +103,9 @@
 			transition: all 0.5s ease;
 		}
 
-		&.v-leave-active {
-			display: none;
-		}
-
 		&.v-enter-from {
-			scale: 10;
+			scale: 0;
+			opacity: 0;
 		}
 	}
 
@@ -120,7 +117,7 @@
 		color: #64ff64;
 	}
 
-	@media screen and (max-width: 480px) {
+	@media screen and (max-width: 768px) {
 		article {
 			flex-direction: column;
 			align-items: center;

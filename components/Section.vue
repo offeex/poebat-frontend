@@ -3,8 +3,8 @@
 		defineProps<{
 			title: String
 			followup?: String
-			marginTitle: number
-			marginFollowup: number
+			marginTitle?: number
+			marginFollowup?: number
 		}>(),
 		{
 			marginTitle: 30,

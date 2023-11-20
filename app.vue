@@ -2,27 +2,6 @@
 	const showDropdown = ref(false)
 	const dialog = ref(false)
 
-	const yaloh = ref(false)
-	const vivcelohi = ref(false)
-
-	const onHover = (e: Event) => {
-		const target = e.target as HTMLButtonElement
-
-		const genPos = () => Math.round(Math.random() * 300) - 150
-		const genPosPx = () => `${genPos()}px ${genPos()}px`
-
-		target.style.translate = genPosPx()
-		yaloh.value = true
-	}
-
-	const naebka = async () => {
-		const redirect = async () => navigateTo('https://t.me/offsdfg', { external: true })
-		if (yaloh.value) {
-			vivcelohi.value = true
-			setTimeout(async () => await redirect(), 3000)
-		} else await redirect()
-	}
-
 	useHead({
 		title: 'Безкоштовні курси IT-програмування для ВСІХ онлайн з ПАЯЛЬНИКОМ',
 		meta: [
@@ -41,35 +20,28 @@
 	</header>
 
 	<main :class="{ 'dialog-open': dialog }">
-		<article class="head-wrapper">
-			<div class="head-container">
-				<p class="robotamrii"
-					>❥━━● &nbsp;&nbsp;&nbsp;IT-курси онлайн з гнучким графіком
-				</p>
-				<div class="title-container">
-					<h1>Хочеш влетіти в IT?</h1>
-					<!--      ВГАДАЙ ХТО НІХУЯ НЕ ЗНАЄ, АЛЕ ЗАРОБЛЯЄ БІЛЬШЕ ТЕБЕ - МИ!-->
-				</div>
-				<h5>А влети-ка на завод, довбойоб</h5>
-				<h5>пройди безкоштовний оффлайн-марафон на станку</h5>
-				<button class="try-button" @click="dialog = true"> Спробувати! </button>
-				<div class="muzhik" />
+		<div class='head-bg' />
+		<section class="head-container">
+			<p class="robotamrii"
+			>❥━━● &nbsp;&nbsp;&nbsp;IT-курси онлайн з гнучким графіком
+			</p>
+			<div class="title-container">
+				<h1>Хочеш влетіти в IT?</h1>
+				<!--      ВГАДАЙ ХТО НІХУЯ НЕ ЗНАЄ, АЛЕ ЗАРОБЛЯЄ БІЛЬШЕ ТЕБЕ - МИ!-->
 			</div>
-		</article>
+			<h5>А влети-ка на завод, довбойоб</h5>
+			<h5>пройди безкоштовний оффлайн-марафон на станку</h5>
+			<button class="try-button" @click="dialog = true"> Спробувати! </button>
+			<div class="muzhik" />
+		</section>
 
 		<div class="wall">
 			<div class="blob i1" />
 			<div class="blob i2" />
-			<svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-				<path
-					fill="#010f13"
-					fill-opacity="1"
-					d="M0,160L34.3,181.3C68.6,203,137,245,206,224C274.3,203,343,117,411,106.7C480,96,549,160,617,154.7C685.7,149,754,75,823,37.3C891.4,0,960,0,1029,42.7C1097.1,85,1166,171,1234,213.3C1302.9,256,1371,256,1406,256L1440,256L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
-			</svg>
+			<img class='wave' src='/images/wave.svg' alt='' />
 		</div>
 
-		<article class="not-head-slide">
-			<Section title="Чому варто обрати саме нас?">
+		<Section title="Чому варто обрати саме нас?">
 				<GridView :gap="20" :columns="2">
 					<ImageTextCard image="/images/podzemnaya-pravda.jpg" title="робота за їжу" />
 					<ImageTextCard
@@ -82,7 +54,7 @@
 				</GridView>
 			</Section>
 
-			<div class="dropdown">
+		<div class="dropdown">
 				<div class="bar">
 					<h4>Що ми для цього робимо?</h4>
 					<button class="show-button" @click="showDropdown = !showDropdown">
@@ -94,7 +66,7 @@
 				</Transition>
 			</div>
 
-			<Section
+		<Section
 				title="Компаніям не вистачає спеціалістів"
 				followup="А таких як ти там ітак дохуя"
 				:margin-title="14">
@@ -106,7 +78,7 @@
 				</GridView>
 			</Section>
 
-			<Section title="Відгуки студентів">
+		<Section title="Відгуки студентів">
 				<GridView :gap="20" :columns="3">
 					<Review
 						image="/images/review3.png"
@@ -129,7 +101,7 @@
 				</GridView>
 			</Section>
 
-			<Section title="Що про нас пишуть">
+		<Section title="Що про нас пишуть">
 				<GridView :gap="20" :columns="3">
 					<Comment
 						image="/images/comment1.jpeg"
@@ -146,63 +118,40 @@
 				</GridView>
 			</Section>
 
-			<section>
-				<!--							<h3>Чому нас обирають студенти?</h3>-->
-			</section>
-
-			<Section title="Оцініть наш сервіс">
+		<Section title="Оцініть наш сервіс">
 				<Rate />
 			</Section>
 
-			<Bubbles />
-		</article>
+		<Bubbles />
 
 		<!--		<div>Ми не на зв'язку, бо нахуй нам ваші проблеми today</div>-->
 	</main>
 
-	<Transition>
-		<div class="dialog-wrapper" v-if="dialog">
-			<div class="try-dialog">
-				<h3 class="shindows">Ваш Windows заблокований</h3>
-				<p>
-					Якшо не бажаєте проєбати своє життя і нити шо ви дєд, беріть індивідуальне
-					мєнторство у
-					<NuxtLink to="https://t.me/offsdfg">@offeex</NuxtLink>
-					, за символічну плату (шоби я не сдох з голоду).
-				</p>
-				<p>
-					якщо хочете <span class="red">з'їбати</span> з цієї сторінки, то кнопка
-					схована, спершу купіть менторство патом пагаварім
-				</p>
-				<button class="knopka ziebat" @mouseover="onHover">З'їбати</button>
-				<button class="knopka kupit" @click="naebka">Взяти менторство</button>
-				<span class="yapoteryaldevstvennost" v-if="vivcelohi">
-					Шо, не получилось з'їбать?)))))))
-				</span>
-				<img class="pizdec-loh" v-if="vivcelohi" src="/images/loh.gif" alt="" />
-			</div>
-		</div>
-	</Transition>
+	<Popup :open='dialog'/>
 </template>
 
 <style lang="scss">
 	body {
 		overflow-x: hidden;
 
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		color: $text-dark;
+
 		&:has(.dialog-open) {
 			overflow-y: hidden;
 		}
 	}
 
-	a {
-		color: $accent-dark;
-	}
-
 	header {
 		position: fixed;
+		left: 0;
 		z-index: 12;
 		width: 100%;
-		padding: 6px 48px;
+		padding: 6px 30px;
 		box-sizing: border-box;
 
 		background-color: $background;
@@ -211,7 +160,7 @@
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
-		gap: 50px;
+		gap: 30px;
 
 		// <NuxtLink> style
 		a {
@@ -227,10 +176,7 @@
 	}
 
 	main {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		width: 1200px;
 	}
 
 	.wall {
@@ -276,24 +222,29 @@
 		}
 	}
 
-	.head-wrapper {
-		width: 100vw;
-		background-color: $background;
+	.head-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
 
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		width: 100vw;
+		height: 100svh;
+
+		background-color: $background;
 	}
 
 	.head-container {
-		width: 1200px;
-		height: 100vh;
+		width: 100%;
+		height: 100svh;
 		position: relative;
 
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: center;
+
+		color: $text;
 	}
 
 	.robotamrii {
@@ -309,6 +260,10 @@
 		transform: rotate(359deg);
 		padding: 0px 14px;
 		margin-bottom: 30px;
+	}
+
+	a {
+		color: $accent-dark;
 	}
 
 	h1 {
@@ -365,12 +320,8 @@
 		background-position: -64px 34px;
 	}
 
-	.not-head-slide {
-		color: $text-dark;
-		width: 1200px;
-	}
-
 	.dropdown {
+		width: 100%;
 		margin-bottom: 60px;
 	}
 
@@ -441,125 +392,6 @@
 		overflow-y: hidden;
 	}
 
-	.dialog-wrapper {
-		display: flex;
-		position: fixed;
-		z-index: 99;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
-		background-color: rgba(0, 0, 0, 0.7);
-		backdrop-filter: blur(20px);
-	}
-
-	.try-dialog {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-
-		width: 60vw;
-		height: 60vh;
-		padding: 20px 25px;
-		margin: auto;
-
-		background-color: $background-dark;
-		color: $text-dark;
-		border: 2px solid $primary-dark;
-		border-radius: 20px;
-		box-shadow: 0 0 20px $primary-dark;
-
-		&.v-enter-active {
-			transition: all 0.5s ease-out;
-		}
-
-		&.v-leave-active {
-			transition: all 0.5s ease-in;
-		}
-
-		&.v-enter-from,
-		&.v-leave-to {
-			opacity: 0;
-			scale: 0.5;
-		}
-
-		p {
-			font-size: 20px;
-		}
-	}
-
-	.shindows {
-		color: greenyellow;
-	}
-
-	.red {
-		color: red;
-		font-style: italic;
-	}
-
-	.knopka {
-		margin-top: 20px;
-		padding: 8px 12px;
-		border: none;
-		border-radius: 4px;
-		font-size: 16px;
-		font-weight: 500;
-
-		a {
-			color: unset;
-			text-decoration: none;
-		}
-	}
-
-	.ziebat {
-		background-color: darkred;
-		color: $text-dark;
-	}
-
-	.kupit {
-		background-color: $primary-dark;
-		color: $text;
-
-		&:hover {
-			cursor: pointer;
-			background-color: $accent-dark;
-		}
-	}
-
-	.yapoteryaldevstvennost {
-		margin-top: 20px;
-
-		animation: loshara 0.3s linear infinite;
-
-		@keyframes loshara {
-			0% {
-				color: red;
-				transform: translateY(-4px);
-			}
-			49% {
-				color: red;
-				transform: translateY(-4px);
-			}
-			50% {
-				color: $text-dark;
-				transform: translateY(4px);
-			}
-			99% {
-				color: $text-dark;
-				transform: translateY(4px);
-			}
-			100% {
-				color: red;
-				transform: translateY(-4px);
-			}
-		}
-	}
-
-	.pizdec-loh {
-		width: 200px;
-		height: 200px;
-	}
-
 	@media screen and (max-width: 1920px) {
 		.wave {
 			bottom: -120px;
@@ -567,11 +399,7 @@
 	}
 
 	@media screen and (max-width: 1280px) {
-		.head-container {
-			width: 960px;
-		}
-
-		.not-head-slide {
+		main {
 			width: 960px;
 		}
 
@@ -587,11 +415,10 @@
 
 	@media screen and (max-width: 1024px) {
 		.head-container {
-			width: 768px;
 			align-items: center;
 		}
 
-		.not-head-slide {
+		main {
 			width: 768px;
 		}
 
@@ -614,25 +441,8 @@
 			gap: 18px;
 		}
 
-		.head-container {
-			align-items: center;
+		main {
 			width: 480px;
-		}
-
-		.not-head-slide {
-			width: 480px;
-		}
-
-		.muzhik {
-			display: none;
-		}
-
-		.mobilizaciya {
-			grid-column: unset;
-		}
-
-		.svincity {
-			grid-column: unset;
 		}
 	}
 
@@ -642,25 +452,8 @@
 			gap: 12px;
 		}
 
-		.head-container {
-			align-items: center;
+		main {
 			width: 320px;
-		}
-
-		.not-head-slide {
-			width: 320px;
-		}
-
-		.muzhik {
-			display: none;
-		}
-
-		.mobilizaciya {
-			grid-column: unset;
-		}
-
-		.svincity {
-			grid-column: unset;
 		}
 	}
 </style>

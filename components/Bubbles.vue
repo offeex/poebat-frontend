@@ -87,7 +87,7 @@
 			height: $size + px;
 
 			animation-duration: random(9) + 5s;
-			animation-delay: random(3) + 1s;
+			animation-delay: random(3) + -3s;
 		}
 	}
 

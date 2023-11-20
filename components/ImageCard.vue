@@ -2,7 +2,7 @@
 	const props = withDefaults(
 		defineProps<{
 			image: string
-			height: string
+			height?: string
 		}>(),
 		{
 			height: '300px'
